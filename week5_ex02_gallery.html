@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <link rel="stylesheet" href="week5_ex02_style.css">
+</head>
+<body>
+  <div class="gallery-container">
+    <h1>Photo Gallery</h1>
+    
+    <!-- Filter Buttons with Flexbox -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="landscape">Landscapes</button>
+      <button class="filter-btn" data-filter="portrait">Portraits</button>
+      <button class="filter-btn" data-filter="architecture">Architecture</button>
+    </div>
+
+    <!-- Image Grid with CSS Grid -->
+    <div class="gallery-grid">
+      <!-- Card 1 -->
+      <div class="gallery-card" data-category="landscape">
+        <img src="https://picsum.photos/400/300?random=1" alt="Mountain">
+        <div class="card-content">
+          <h3>Mountain View</h3>
+          <span class="category-tag">Landscape</span>
+        </div>
+        <div class="overlay">
+          <p>Beautiful mountain landscape at sunrise</p>
+        </div>
+      </div>
+      
+      <!-- Card 2 -->
+      <div class="gallery-card" data-category="portrait">
+        <img src="https://picsum.photos/400/300?random=2" alt="Person">
+        <div class="card-content">
+          <h3>Portrait 1</h3>
+          <span class="category-tag">Portrait</span>
+        </div>
+        <div class="overlay">
+          <p>Professional portrait photography</p>
+        </div>
+      </div>
+      
+      <!-- Card 3 -->
+      <div class="gallery-card" data-category="architecture">
+        <img src="https://picsum.photos/400/300?random=3" alt="Building">
+        <div class="card-content">
+          <h3>Modern Building</h3>
+          <span class="category-tag">Architecture</span>
+        </div>
+        <div class="overlay">
+          <p>Contemporary architectural design</p>
+        </div>
+      </div>
+      
+      <!-- You need to copy this card block 9 more times and change random=4 to random=12 -->
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.gallery-card');
+    const grid = document.querySelector('.gallery-grid');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        grid.style.position = 'relative';
+
+        cards.forEach(card => {
+          const matches = filter === 'all' || card.dataset.category === filter;
+          if (matches) {
+            card.classList.remove('hidden');
+            card.style.position = 'relative';
+          } else {
+            card.classList.add('hidden');
+            card.style.position = 'absolute';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
