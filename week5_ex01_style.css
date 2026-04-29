@@ -1,0 +1,75 @@
+/* Page layout */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Grid layout - 3 cards per row on desktop */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  gap: 30px;
+  justify-content: center;
+}
+
+/* Tablet: 2 cards per row when screen is 768px or smaller */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 300px);
+  }
+}
+
+/* Mobile: 1 card per row when screen is 480px or smaller */
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 300px;
+  }
+}
+
+/* Product card styling */
+.product-card {
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 15px;
+  background-color: white;
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.product-card p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 10px 0;
+}
+
+/* Button with hover effect */
+.add-to-cart {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #45a049;
+}
